@@ -1,6 +1,6 @@
 import './App.css'
 import Board from "./components/Board.tsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 interface Square {
@@ -23,27 +23,15 @@ interface Square {
 
   const App = () => {
 
-    const [squares, setSquares] = useState<Square[]>(()=>{
-      const saved = localStorage.getItem('squares');
-      return saved ? JSON.parse(saved) : createBoard();
-    });
-
-    const [tries, setTries] = useState<number>(() =>{
-      const saved = localStorage.getItem('tries');
-      return saved ? JSON.parse(saved) : 0;
-    });
-
-    useEffect(() => {
-      localStorage.setItem('squares', JSON.stringify(squares));
-      localStorage.setItem('tries', JSON.stringify(tries));
-    }, [squares, tries]);
+    const [squares, setSquares] = useState<Square[]>(createBoard);
+    const [tries, setTries] = useState<number>(0);
 
     const handleClick = (id: string) =>{
       setSquares(prev => prev.map(square =>
       square.id === id ? { ...square, clicked: true}: square
       ));
       setTries(prev => prev + 1);
-    }
+    };
 
     const handleReset = () => {
       setSquares(createBoard());
