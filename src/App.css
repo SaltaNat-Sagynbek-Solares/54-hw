@@ -182,3 +182,26 @@
     border-right-color: var(--border);
   }
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.btn-reset{
+  margin-left: 10px ;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  background: #8fd88f;
+  transition: background 0.2s;
+}
+
+.btn-reset:hover{
+  background: #70bc70;
+}

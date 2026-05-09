@@ -53,10 +53,10 @@ interface Square {
     };
 
     return (
-      <div>
+      <div className="container">
         <Board squares={squares} onSquareClick={handleClick} />
         <p>Tries: {tries}</p>
-        <button onClick={handleReset}>Reset</button>
+        <button className="btn-reset" onClick={handleReset}>Reset</button>
       </div>
     );
 

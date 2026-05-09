@@ -1,0 +1,9 @@
+.board{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  width: fit-content;
+  border: 1px solid #201f1f;
+  padding: 5px;
+  align-items: center;
+}

@@ -1,4 +1,5 @@
 import SingleSquare  from "./SingleSquare.tsx";
+import "./Board.css"
 
 interface  Square{
   id: string;
