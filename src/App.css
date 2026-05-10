@@ -200,6 +200,7 @@
   cursor: pointer;
   background: #8fd88f;
   transition: background 0.2s;
+  margin-top: 10px;
 }
 
 .btn-reset:hover{

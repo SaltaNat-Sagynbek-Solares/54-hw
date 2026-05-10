@@ -10,9 +10,10 @@ interface  Square{
 interface BoardProps {
   squares: Square [];
   onSquareClick: (id: string) => void;
+  gameOver: boolean;
 }
 
-const Board = ({ squares, onSquareClick} : BoardProps) => {
+const Board = ({ squares, onSquareClick, gameOver} : BoardProps) => {
 
   return (
     <div className="board">
@@ -21,7 +22,7 @@ const Board = ({ squares, onSquareClick} : BoardProps) => {
           id={square.id}
           hasItem={square.hasItem}
           clicked={square.clicked}
-          onClick={() => onSquareClick(square.id)}
+          onClick={() => !square.clicked && !gameOver && onSquareClick(square.id)}
         />
       ))}
     </div>

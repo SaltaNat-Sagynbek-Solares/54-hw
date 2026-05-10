@@ -25,25 +25,29 @@ interface Square {
 
     const [squares, setSquares] = useState<Square[]>(createBoard);
     const [tries, setTries] = useState<number>(0);
+    const [gameOver, setGameOver] = useState<boolean>(false);
 
     const handleClick = (id: string) =>{
+      const clickedSquare = squares.find(square => square.id === id);
       setSquares(prev => prev.map(square =>
       square.id === id ? { ...square, clicked: true}: square
       ));
       setTries(prev => prev + 1);
+      if( clickedSquare?.hasItem){
+        setGameOver(true);
+      }
     };
 
     const handleReset = () => {
       setSquares(createBoard());
       setTries(0);
-      localStorage.removeItem('squares');
-      localStorage.removeItem('tries');
+      setGameOver(false);
     };
 
     return (
       <div className="container">
-        <Board squares={squares} onSquareClick={handleClick} />
-        <p>Tries: {tries}</p>
+        <Board squares={squares} onSquareClick={handleClick}  gameOver={gameOver}/>
+        {gameOver && <div>Found it in <b>{tries}</b> tries  <p> Restart the Game </p></div> }
         <button className="btn-reset" onClick={handleReset}>Reset</button>
       </div>
     );
