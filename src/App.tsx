@@ -47,7 +47,8 @@ interface Square {
     return (
       <div className="container">
         <Board squares={squares} onSquareClick={handleClick}  gameOver={gameOver}/>
-        {gameOver && <div>Found it in <b>{tries}</b> tries  <p> Restart the Game </p></div> }
+        <p>Tries: {tries}</p>
+        {gameOver && <div>Found it in {tries} tries <p>restart the game </p></div>}
         <button className="btn-reset" onClick={handleReset}>Reset</button>
       </div>
     );
